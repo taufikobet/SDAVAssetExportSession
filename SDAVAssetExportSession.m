@@ -172,8 +172,8 @@
     
     [self.writer startWriting];
 
-    if (self.writer.canPerformMultiplePasses) {
-        self.writer.performsMultiPassEncodingIfSupported = YES;
+    if (self.videoInput.canPerformMultiplePasses) {
+        self.videoInput.performsMultiPassEncodingIfSupported = YES;
     }
     
     [self.reader startReading];
