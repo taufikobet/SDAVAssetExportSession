@@ -125,6 +125,7 @@
         //
         self.videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:self.videoSettings];
         self.videoInput.expectsMediaDataInRealTime = NO;
+
         if ([self.writer canAddInput:self.videoInput])
         {
             [self.writer addInput:self.videoInput];
@@ -170,6 +171,11 @@
     }
     
     [self.writer startWriting];
+
+    if (self.writer.canPerformMultiplePasses) {
+        self.writer.performsMultiPassEncodingIfSupported = YES;
+    }
+    
     [self.reader startReading];
     [self.writer startSessionAtSourceTime:self.timeRange.start];
 
